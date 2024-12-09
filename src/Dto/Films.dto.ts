@@ -1,6 +1,6 @@
 export class FilmsDto {
     title: string
     director: string
-    relesseDate: string
+    releaseDate: string
     genre: string
 }

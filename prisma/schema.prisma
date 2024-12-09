@@ -1,0 +1,17 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Films {
+  id          Int      @id @default(autoincrement())
+  title       String
+  director    String
+  releaseDate DateTime
+  genre       String
+  createdAt   DateTime @default(now())
+}

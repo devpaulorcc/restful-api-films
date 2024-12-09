@@ -46,4 +46,13 @@ export class FilmsService {
       },
     });
   }
+
+  deleteFilm(id: string) {
+    const numericId = parseInt(id, 10);
+    return this.prisma.films.delete({
+      where: {
+        id: numericId,
+      },
+    });
+  }
 }

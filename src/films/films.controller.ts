@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { FilmsService } from './films.service';
 import { FilmsDto, PartialFilmsDto } from 'src/Dto/Films.dto';
 
@@ -22,10 +31,12 @@ export class FilmsController {
   }
 
   @Patch(':id')
-  partialUpdateFilm(
-    @Param('id') id: number,
-    @Body() data: PartialFilmsDto,
-  ) {
+  partialUpdateFilm(@Param('id') id: number, @Body() data: PartialFilmsDto) {
     return this.filmsService.partialUpdateFilm(Number(id), data);
+  }
+
+  @Delete(':id')
+  deleteFilm(@Param('id') id: string) {
+    return this.filmsService.deleteFilm(id);
   }
 }

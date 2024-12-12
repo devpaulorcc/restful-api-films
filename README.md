@@ -71,4 +71,13 @@ PATCH:
     {
         "genre": "Fantasia"
     }
+DELETE:
+    {
+        "id": 6,
+        "title": "A Origem",
+        "director": "Christopher Nolan",
+        "releaseDate": "2010-07-16T00:00:00.000Z",
+        "genre": "Ficção Científica",
+        "createdAt": "2024-12-09T02:41:39.634Z"
+    }
 ```

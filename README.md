@@ -40,3 +40,35 @@ Essa API possui os seguintes endpoints:
 - `PUT /films/{id}`: Completely updates a movie.
 - `PATCH /posts/{id}`: Updates a specific resource.
 - `DELETE /posts/{id}`: Delete a movie.
+
+## Expected formats JSON
+
+```bash
+GET:
+    {
+        "id": 1,
+        "title": "O Retorno de Jedi",
+        "director": "Richard Marquand",
+        "releaseDate": "1983-10-06T00:00:00.000Z",
+        "genre": "Ficção científica/Fantasia",
+        "createdAt": "2024-12-09T02:11:26.909Z"
+    }
+POST:
+    {
+        "title": "O Retorno de Jedi",
+        "director": "Richard Marquand",
+        "releaseDate": "1983-10-06",
+        "genre": "Ficção científica/Fantasia"
+    }
+PUT:
+    {
+        "title": "Star Wars: Episódio III – A Vingança dos Sith",
+        "director": "George Lucas",
+        "releaseDate": "2005-05-19",
+        "genre": "Ficção científica"
+    }
+PATCH:
+    {
+        "genre": "Fantasia"
+    }
+```

@@ -33,51 +33,93 @@ https://rest-api-films.onrender.com
 
 ## Endpoints
 
-Essa API possui os seguintes endpoints:
-
-- `GET /`: Returns API status.
-- `POST /films`: Adds a new movie.
-- `PUT /films/{id}`: Completely updates a movie.
-- `PATCH /posts/{id}`: Updates a specific resource.
-- `DELETE /posts/{id}`: Delete a movie.
-
-## Expected formats JSON
-
+### 1. `GET /`
+**Description**: Checks the API status.  
+**Expected response**:
 ```bash
-GET:
-    {
-        "id": 1,
-        "title": "O Retorno de Jedi",
-        "director": "Richard Marquand",
-        "releaseDate": "1983-10-06T00:00:00.000Z",
-        "genre": "Ficção científica/Fantasia",
-        "createdAt": "2024-12-09T02:11:26.909Z"
-    }
-POST:
-    {
-        "title": "O Retorno de Jedi",
-        "director": "Richard Marquand",
-        "releaseDate": "1983-10-06",
-        "genre": "Ficção científica/Fantasia"
-    }
-PUT:
-    {
-        "title": "Star Wars: Episódio III – A Vingança dos Sith",
-        "director": "George Lucas",
-        "releaseDate": "2005-05-19",
-        "genre": "Ficção científica"
-    }
-PATCH:
-    {
-        "genre": "Fantasia"
-    }
-DELETE:
-    {
-        "id": 6,
-        "title": "A Origem",
-        "director": "Christopher Nolan",
-        "releaseDate": "2010-07-16T00:00:00.000Z",
-        "genre": "Ficção Científica",
-        "createdAt": "2024-12-09T02:41:39.634Z"
-    }
+{
+    "code": 200,
+    "status": "OK",
+    "description": "An api made for all the functions of a CRUD for films."
+}
+```
+
+### 2. `POST /films`
+**Description**: Adds a new movie to the catalog.  
+**Expected request format**:
+```bash
+{
+    "title": "Return of the Jedi",
+    "director": "Richard Marquand",
+    "releaseDate": "1983-10-06",
+    "genre": "Science Fiction/Fantasy"
+}
+```
+**Expected response** (on success):
+```bash
+{
+    "id": 1,
+    "title": "Return of the Jedi",
+    "director": "Richard Marquand",
+    "releaseDate": "1983-10-06",
+    "genre": "Science Fiction/Fantasy",
+    "createdAt": "2024-12-14T12:00:00.000Z"
+}
+```
+
+### 3. `PUT /films/{id}`
+**Description**: Completely updates a movie by its ID.  
+**Expected request format**:
+```bash
+{
+    "title": "Star Wars: Episode III – Revenge of the Sith",
+    "director": "George Lucas",
+    "releaseDate": "2005-05-19",
+    "genre": "Science Fiction"
+}
+```
+**Expected response**:
+```bash
+{
+    "id": 1,
+    "title": "Star Wars: Episode III – Revenge of the Sith",
+    "director": "George Lucas",
+    "releaseDate": "2005-05-19",
+    "genre": "Science Fiction",
+    "createdAt": "2024-12-14T12:00:00.000Z"
+}
+```
+
+### 4. `PATCH /films/{id}`
+**Description**: Partially updates a specific resource of a movie by its ID.  
+**Expected request format**:
+```bash
+{
+    "genre": "Fantasy"
+}
+```
+**Expected response**:
+```bash
+{
+    "id": 1,
+    "title": "Return of the Jedi",
+    "director": "Richard Marquand",
+    "releaseDate": "1983-10-06",
+    "genre": "Fantasy",
+    "createdAt": "2024-12-14T12:00:00.000Z"
+}
+```
+
+### 5. `DELETE /films/{id}`
+**Description**: Deletes a movie from the catalog by its ID.  
+**Expected response**:
+```bash
+{
+    "id": 1,
+    "title": "Return of the Jedi",
+    "director": "Richard Marquand",
+    "releaseDate": "1983-10-06",
+    "genre": "Science Fiction/Fantasy",
+    "createdAt": "2024-12-14T12:00:00.000Z"
+}
 ```

@@ -34,8 +34,10 @@ https://rest-api-films.onrender.com
 ## Endpoints
 
 ### 1. `GET /`
+
 **Description**: Checks the API status.  
 **Expected response**:
+
 ```bash
 {
     "code": 200,
@@ -45,9 +47,11 @@ https://rest-api-films.onrender.com
 ```
 
 ### 2. `GET /films`
+
 **Description**: List all movies.
 
 **Expected response**:
+
 ```bash
 [
   {
@@ -86,10 +90,31 @@ https://rest-api-films.onrender.com
 ]
 ```
 
-### 3. `POST /films`
-**Description**: Adds a new movie to the catalog.  
+### 3. `GET /films/{id}`
+
+**Description**: Find one movie by id.
+
+**Expected response**:
+
+```bash
+
+  {
+    "id": 1,
+    "title": "O Retorno de Jedi",
+    "director": "Richard Marquand",
+    "releaseDate": "1983-10-06T00:00:00.000Z",
+    "genre": "Ficção científica/Fantasia",
+    "createdAt": "2024-12-09T02:11:26.909Z"
+  }
+
+```
+
+### 4. `POST /films`
+
+**Description**: Adds a new movie to the catalog.
 
 **Expected request format**:
+
 ```bash
 {
     "title": "Return of the Jedi",
@@ -100,6 +125,7 @@ https://rest-api-films.onrender.com
 ```
 
 **Expected response** (on success):
+
 ```bash
 {
     "id": 1,
@@ -111,10 +137,12 @@ https://rest-api-films.onrender.com
 }
 ```
 
-### 4. `PUT /films/{id}`
-**Description**: Completely updates a movie by its ID.  
+### 5. `PUT /films/{id}`
+
+**Description**: Completely updates a movie by its ID.
 
 **Expected request format**:
+
 ```bash
 {
     "title": "Star Wars: Episode III – Revenge of the Sith",
@@ -125,6 +153,7 @@ https://rest-api-films.onrender.com
 ```
 
 **Expected response**:
+
 ```bash
 {
     "id": 1,
@@ -136,10 +165,12 @@ https://rest-api-films.onrender.com
 }
 ```
 
-### 5. `PATCH /films/{id}`
-**Description**: Partially updates a specific resource of a movie by its ID.  
+### 6. `PATCH /films/{id}`
+
+**Description**: Partially updates a specific resource of a movie by its ID.
 
 **Expected request format**:
+
 ```bash
 {
     "genre": "Fantasy"
@@ -147,6 +178,7 @@ https://rest-api-films.onrender.com
 ```
 
 **Expected response**:
+
 ```bash
 {
     "id": 1,
@@ -158,10 +190,12 @@ https://rest-api-films.onrender.com
 }
 ```
 
-### 6. `DELETE /films/{id}`
-**Description**: Deletes a movie from the catalog by its ID.  
+### 7. `DELETE /films/{id}`
+
+**Description**: Deletes a movie from the catalog by its ID.
 
 **Expected response**:
+
 ```bash
 {
     "id": 1,

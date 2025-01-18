@@ -9,7 +9,8 @@ import {
   Put,
 } from '@nestjs/common';
 import { FilmsService } from './films.service';
-import { FilmsDto, PartialFilmsDto } from 'src/Dto/Films.dto';
+import { UpdateFilmDto } from 'src/films/Dto/update-film.dto';
+import { CreateFilmDto } from './Dto/create-film.dto';
 
 @Controller('films')
 export class FilmsController {
@@ -20,19 +21,24 @@ export class FilmsController {
     return this.filmsService.findAll();
   }
 
+  @Get(':id')
+  findOneFilms(@Param('id') id: string) {
+    return this.filmsService.findOne(id);
+  }
+
   @Post()
-  registerNewFilm(@Body() data: FilmsDto) {
+  registerNewFilm(@Body() data: CreateFilmDto) {
     return this.filmsService.register(data);
   }
 
   @Put(':id')
-  updateFilm(@Param('id') id: number, @Body() data: FilmsDto) {
-    return this.filmsService.updateFilm(Number(id), data);
+  updateFilm(@Param('id') id: number, @Body() updateFilmDto: UpdateFilmDto) {
+    return this.filmsService.updateFilm(Number(id), updateFilmDto);
   }
 
   @Patch(':id')
-  partialUpdateFilm(@Param('id') id: number, @Body() data: PartialFilmsDto) {
-    return this.filmsService.partialUpdateFilm(Number(id), data);
+  partialUpdateFilm(@Param('id') id: number, @Body() updateFilmDto: UpdateFilmDto) {
+    return this.filmsService.partialUpdateFilm(Number(id), updateFilmDto);
   }
 
   @Delete(':id')

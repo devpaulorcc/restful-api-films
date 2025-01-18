@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { FilmsDto, PartialFilmsDto } from 'src/Dto/Films.dto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateFilmDto } from './Dto/create-film.dto';
+import { UpdateFilmDto } from './Dto/update-film.dto';
 
 @Injectable()
 export class FilmsService {
@@ -10,7 +11,19 @@ export class FilmsService {
     return this.prisma.films.findMany();
   }
 
-  register(data: FilmsDto) {
+  async findOne(id: string) {
+    const filmItem = await this.prisma.films.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!filmItem) {
+      throw new HttpException('Film not found', HttpStatus.NOT_FOUND);
+    }
+
+    return filmItem;
+  }
+
+  register(data: CreateFilmDto) {
     const releaseDate = new Date(data.releaseDate);
     return this.prisma.films.create({
       data: {
@@ -22,7 +35,7 @@ export class FilmsService {
     });
   }
 
-  updateFilm(id: number, data: FilmsDto) {
+  updateFilm(id: number, data: UpdateFilmDto) {
     const releaseDate = new Date(data.releaseDate);
     return this.prisma.films.update({
       where: { id },
@@ -35,7 +48,7 @@ export class FilmsService {
     });
   }
 
-  partialUpdateFilm(id: number, data: PartialFilmsDto) {
+  partialUpdateFilm(id: number, data: UpdateFilmDto) {
     return this.prisma.films.update({
       where: { id },
       data: {
